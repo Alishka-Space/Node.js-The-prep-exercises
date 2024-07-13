@@ -1,11 +1,15 @@
+/*week3/prep-exercise/server/app.js*/
 import express from 'express';
-// TODO Use below import statement for importing middlewares from users.js for your routes
-// TODO import { ....... } from "./users.js";
+import { register, login, getProfile, logout } from './users.js';
 
 let app = express();
 
 app.use(express.json());
-// TODO: Create routes here, e.g. app.post("/register", .......)
+
+app.post('/register', register);
+app.post('/auth/login', login);
+app.post('/auth/logout', logout);
+app.get('/auth/profile', getProfile);
 
 // Serve the front-end application from the `client` folder
 app.use(express.static('client'));
